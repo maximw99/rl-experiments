@@ -199,9 +199,9 @@ def optimize_model():
 
 
 if torch.cuda.is_available():
-    num_episodes = 150
+    num_episodes = 500
 else:
-    num_episodes = 150
+    num_episodes = 300
 
 for i_episode in range(num_episodes):
     # Initialize the environment and get its state
