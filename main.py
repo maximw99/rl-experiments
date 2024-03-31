@@ -29,25 +29,6 @@ plt.ion()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-def random_run():
-
-    env.reset()
-    episodes = 10
-    for episode in range(0, episodes):
-        state = env.reset()
-        terminated = False
-        score = 0 
-        
-        while not terminated:
-            env.render()
-            action = random.choice([0,1])
-            n_state, reward, terminated, truncated, info = env.step(action)
-            score+=reward
-        print('Episode:{} Score:{}'.format(episode, score))
-
-    env.close()
-
-
 Transition = namedtuple('Transition',
                         ('state', 'action', 'next_state', 'reward'))
 
@@ -218,9 +199,9 @@ def optimize_model():
 
 
 if torch.cuda.is_available():
-    num_episodes = 50
+    num_episodes = 150
 else:
-    num_episodes = 50
+    num_episodes = 150
 
 for i_episode in range(num_episodes):
     # Initialize the environment and get its state
